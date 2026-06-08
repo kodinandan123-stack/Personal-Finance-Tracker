@@ -1,25 +1,35 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from './context/AuthContext';
+import Navbar from './components/Navbar';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import DashboardPage from './pages/DashboardPage';
+import TransactionsPage from './pages/TransactionsPage';
+import GoalsPage from './pages/GoalsPage';
 
-// Placeholder pages - to be replaced in future steps
-const Dashboard = () => <div className="p-8"><h1 className="text-2xl font-bold text-gray-800">Dashboard</h1>h1></div>div>
-  const Login = () => <div className="p-8"><h1 className="text-2xl font-bold text-gray-800">Login</h1>h1></div>div>
-  const Register = () => <div className="p-8"><h1 className="text-2xl font-bold text-gray-800">Register</h1>h1></div>div>
-  const Transactions = () => <div className="p-8"><h1 className="text-2xl font-bold text-gray-800">Transactions</h1>h1></div>div>
-  const Goals = () => <div className="p-8"><h1 className="text-2xl font-bold text-gray-800">Savings Goals</h1>h1></div>div>
-  
-  function App() {
-      return (
-            <Router>
-                  <Routes>
-                          <Route path="/" element={<Navigate to="/dashboard" replace />} />
-                          <Route path="/login" element={<Login />} />
-                          <Route path="/register" element={<Register />} />
-                          <Route path="/dashboard" element={<Dashboard />} />
-                          <Route path="/transactions" element={<Transactions />} />
-                          <Route path="/goals" element={<Goals />} />
-                  </Routes>Routes>
-            </Router>Router>
-          )
-  }
-  
-  export default App</div>
+function PrivateRoute({ children }) {
+  const { user, loading } = useContext(AuthContext);
+  if (loading) return <div className="flex items-center justify-center h-screen text-gray-400">Loading...</div>;
+  return user ? children : <Navigate to="/login" replace />;
+}
+
+function App() {
+  const { user } = useContext(AuthContext);
+
+  return (
+    <Router>
+      {user && <Navbar />}
+      <Routes>
+        <Route path="/" element={<Navigate to="/dashboard" replace />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/dashboard" element={<PrivateRoute><DashboardPage /></PrivateRoute>} />
+        <Route path="/transactions" element={<PrivateRoute><TransactionsPage /></PrivateRoute>} />
+        <Route path="/goals" element={<PrivateRoute><GoalsPage /></PrivateRoute>} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
