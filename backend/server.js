@@ -6,6 +6,7 @@ require('dotenv').config();
 const authRoutes = require('./routes/authRoutes');
 const transactionRoutes = require('./routes/transactionRoutes');
 const goalRoutes = require('./routes/goalRoutes');
+const budgetRoutes = require('./routes/budgetRoutes');
 const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 
 const app = express();
@@ -18,10 +19,11 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/transactions', transactionRoutes);
 app.use('/api/goals', goalRoutes);
+app.use('/api/budgets', budgetRoutes);
 
 // Health check
 app.get('/', (req, res) => {
-    res.json({ message: 'Personal Finance Tracker API is running' });
+        res.json({ message: 'Personal Finance Tracker API is running' });
 });
 
 // Error handling middleware (must be after all routes)
@@ -30,15 +32,15 @@ app.use(errorHandler);
 
 // Connect to MongoDB
 mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => {
-        console.log('MongoDB connected');
-        const PORT = process.env.PORT || 5000;
-        app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-  })
-  .catch((err) => {
-        console.error('MongoDB connection error:', err.message);
-        process.exit(1);
-  });
+    .connect(process.env.MONGO_URI)
+    .then(() => {
+                console.log('MongoDB connected');
+                const PORT = process.env.PORT || 5000;
+                app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+    })
+    .catch((err) => {
+                console.error('MongoDB connection error:', err.message);
+                process.exit(1);
+    });
 
 module.exports = app;
