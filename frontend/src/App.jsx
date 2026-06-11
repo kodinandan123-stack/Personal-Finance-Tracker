@@ -7,29 +7,33 @@ import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
 import TransactionsPage from './pages/TransactionsPage';
 import GoalsPage from './pages/GoalsPage';
+import BudgetPage from './pages/BudgetPage';
+import ReportsPage from './pages/ReportsPage';
 
 function PrivateRoute({ children }) {
-  const { user, loading } = useContext(AuthContext);
-  if (loading) return <div className="flex items-center justify-center h-screen text-gray-400">Loading...</div>;
-  return user ? children : <Navigate to="/login" replace />;
+    const { user, loading } = useContext(AuthContext);
+    if (loading) return <div className="flex items-center justify-center h-screen text-gray-400">Loading...</div>div>;
+    return user ? children : <Navigate to="/login" replace />;
 }
 
 function App() {
-  const { user } = useContext(AuthContext);
-
-  return (
-    <Router>
-      {user && <Navbar />}
-      <Routes>
-        <Route path="/" element={<Navigate to="/dashboard" replace />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/dashboard" element={<PrivateRoute><DashboardPage /></PrivateRoute>} />
-        <Route path="/transactions" element={<PrivateRoute><TransactionsPage /></PrivateRoute>} />
-        <Route path="/goals" element={<PrivateRoute><GoalsPage /></PrivateRoute>} />
-      </Routes>
-    </Router>
-  );
-}
-
-export default App;
+    const { user } = useContext(AuthContext);
+  
+    return (
+          <Router>
+            {user && <Navbar />}
+                <Routes>
+                        <Route path="/" element={<Navigate to="/dashboard" replace />} />
+                        <Route path="/login" element={<LoginPage />} />
+                        <Route path="/register" element={<RegisterPage />} />
+                        <Route path="/dashboard" element={<PrivateRoute><DashboardPage /></PrivateRoute>PrivateRoute>} />
+                                <Route path="/transactions" element={<PrivateRoute><TransactionsPage /></PrivateRoute>PrivateRoute>} />
+                                        <Route path="/goals" element={<PrivateRoute><GoalsPage /></PrivateRoute>PrivateRoute>} />
+                                                <Route path="/budget" element={<PrivateRoute><BudgetPage /></PrivateRoute>PrivateRoute>} />
+                                                        <Route path="/reports" element={<PrivateRoute><ReportsPage /></PrivateRoute>PrivateRoute>} />
+                                                        </Route>Routes>
+                                                </Route>Router>
+                                          );
+                                          }
+                                        
+                                        export default App;</div>
