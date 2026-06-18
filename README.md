@@ -1,37 +1,65 @@
-# Personal Finance Tracker
+# 💰 Personal Finance Tracker
 
-A web app to track income, expenses, and savings goals with visual charts.
+A full-stack web app to track income, expenses, budgets, and savings goals with visual charts, recurring transactions, and smart budget alerts.
 
 ## Tech Stack
-- Frontend: React.js + Tailwind CSS
-- Backend: Node.js + Express
-- Database: MongoDB
-- Charts: Chart.js / Recharts
+- **Frontend:** React.js (Vite) + Tailwind CSS
+- **Backend:** Node.js + Express
+- **Database:** MongoDB (Mongoose)
+- **Charts:** Recharts
+- **Auth:** JWT-based authentication
 
 ## Features
 - Track income and expenses by category
-- Visual dashboard with monthly charts
-- Savings goals tracker
+- Visual dashboard with monthly income vs. expense charts
+- Budgets with category limits and overspend alerts
+- Savings goals tracker with progress
+- Recurring transactions (auto-processing of due items)
+- Notifications for budget alerts and goal milestones
+- Reports with date-range filtering
+- Export transactions to CSV
+- Multi-currency support
 - JWT-based user authentication
-- Export data to CSV
 - Mobile responsive design
+
+## Project Structure
+```
+Personal-Finance-Tracker/
+├── backend/    # Express API, MongoDB models, controllers, routes
+└── frontend/   # React + Vite + Tailwind client
+```
 
 ## Getting Started
 
 ### Prerequisites
 - Node.js (v18+)
-- MongoDB
+- MongoDB (local or Atlas)
 
-### Installation
+### Backend Setup
 ```bash
-git clone https://github.com/kodinandan123-stack/Personal-Finance-Tracker.git
-cd Personal-Finance-Tracker
+cd backend
 npm install
+cp .env.example .env   # then fill in MONGO_URI and JWT_SECRET
 npm start
 ```
 
+### Frontend Setup
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+The frontend runs on Vite's dev server and the backend API on port 5000 by default.
+
+## Environment Variables
+See `backend/.env.example` for required variables (MongoDB URI, JWT secret, port).
+
+## Contributing
+Contributions are welcome! Please read CONTRIBUTING.md before opening a pull request.
+
 ## Project Status
-🚧 In Development
+✅ Core features complete — actively maintained.
 
 ## License
-MIT
+This project is licensed under the MIT License — see the LICENSE file for details.
