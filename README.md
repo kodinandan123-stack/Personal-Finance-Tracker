@@ -61,5 +61,7 @@ Contributions are welcome! Please read CONTRIBUTING.md before opening a pull req
 ## Project Status
 ✅ Core features complete — actively maintained.
 
+The mobile app (the remaining v2.0 item) has not been started yet. See [MOBILE.md](MOBILE.md) for the planned scope and task checklist, and [ROADMAP.md](ROADMAP.md) for overall progress.
+
 ## License
 This project is licensed under the MIT License — see the LICENSE file for details.
