@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "Personal Finance Tracker",
+    "slug": "personal-finance-tracker",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "scheme": "pft",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.pft.mobile"
+    },
+    "android": {
+      "package": "com.pft.mobile"
+    },
+    "web": {
+      "bundler": "metro"
+    },
+    "extra": {
+      "apiBaseUrl": "http://localhost:5000/api"
+    }
+  }
+}
