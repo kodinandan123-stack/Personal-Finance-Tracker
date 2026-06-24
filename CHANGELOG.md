@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Health check endpoint (`GET /api/health`) for uptime monitoring.
 - Shared backend input validation utilities (`backend/utils/validators.js`).
 - `useDebounce` React hook for search and filter inputs.
+- Password reset via email flow (POST /api/auth/forgot-password, POST /api/auth/reset-password).
+- Dark mode preference persistence in user profile settings.
+- Transaction search and filter by date range, category, and amount.
 
 ## [2.0.0]
 
