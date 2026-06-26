@@ -13,6 +13,7 @@ const dashboardRoutes = require('./routes/dashboardRoutes');
 const reportRoutes = require('./routes/reportRoutes');
 const notificationRoutes = require('./routes/notificationRoutes');
 const recurringTransactionRoutes = require('./routes/recurringTransactionRoutes');
+const investmentRoutes = require('./routes/investmentRoutes');
 const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 
 const app = express();
@@ -50,6 +51,7 @@ app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/reports', reportRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/recurring', recurringTransactionRoutes);
+app.use('/api/investments', investmentRoutes);
 
 // Health check
 app.get('/', (req, res) => {
