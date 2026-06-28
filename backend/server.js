@@ -14,6 +14,7 @@ const reportRoutes = require('./routes/reportRoutes');
 const notificationRoutes = require('./routes/notificationRoutes');
 const recurringTransactionRoutes = require('./routes/recurringTransactionRoutes');
 const investmentRoutes = require('./routes/investmentRoutes');
+const healthRoutes = require('./routes/healthRoutes');
 const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 
 const app = express();
@@ -52,8 +53,9 @@ app.use('/api/reports', reportRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/recurring', recurringTransactionRoutes);
 app.use('/api/investments', investmentRoutes);
+app.use('/api/health', healthRoutes);
 
-// Health check
+// Root endpoint
 app.get('/', (req, res) => {
   res.json({ message: 'Personal Finance Tracker API is running' });
 });
