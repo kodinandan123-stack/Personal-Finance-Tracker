@@ -8,12 +8,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Health check endpoint (`GET /api/health`) for uptime monitoring.
-- Shared backend input validation utilities (`backend/utils/validators.js`).
-- `useDebounce` React hook for search and filter inputs.
-- Password reset via email flow (POST /api/auth/forgot-password, POST /api/auth/reset-password).
 - Dark mode preference persistence in user profile settings.
 - Transaction search and filter by date range, category, and amount.
+
+## [2.1.0] - 2026-06-28
+
+### Added
+- Structured health check endpoint (`GET /api/health`) with MongoDB connection status, server uptime, and ISO timestamp. Returns HTTP 200 when healthy and 503 when degraded.
+- `healthController.js` — dedicated controller for the health check response, replacing the previous inline route handler.
+- Extended `backend/utils/validators.js` with `isValidObjectId`, `isValidDate`, `isValidFrequency`, and `isWithinLength` helpers.
+- Password reset via email flow (`POST /api/auth/forgot-password`, `POST /api/auth/reset-password`).
+
+### Changed
+- `healthRoutes.js` refactored to delegate to `healthController` instead of handling the response inline.
+- `server.js` now mounts `healthRoutes` at `/api/health` alongside all other API routes.
 
 ## [2.0.0]
 
