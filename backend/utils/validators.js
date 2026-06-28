@@ -22,9 +22,34 @@ function isNonEmptyString(value) {
   return typeof value === 'string' && value.trim().length > 0;
 }
 
+// Validates a MongoDB ObjectId string (24 hex characters).
+function isValidObjectId(id) {
+  return typeof id === 'string' && /^[a-f\d]{24}$/i.test(id);
+}
+
+// Validates an ISO 8601 date string or any Date-parseable value.
+function isValidDate(value) {
+  if (!value) return false;
+  return !Number.isNaN(Date.parse(value));
+}
+
+// Validates a recurrence or budget frequency value.
+function isValidFrequency(value) {
+  return ['daily', 'weekly', 'monthly', 'yearly'].includes(value);
+}
+
+// Validates that a string does not exceed a maximum length.
+function isWithinLength(value, maxLen = 255) {
+  return typeof value === 'string' && value.length <= maxLen;
+}
+
 module.exports = {
   isValidAmount,
   isValidEmail,
   isValidTransactionType,
   isNonEmptyString,
+  isValidObjectId,
+  isValidDate,
+  isValidFrequency,
+  isWithinLength,
 };
