@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dark mode preference persistence in user profile settings.
 - Transaction search and filter by date range, category, and amount.
 
+## [2.2.0] - 2026-06-29
+
+### Added
+- `recurringTransactionRoutes.js` — REST routes for recurring transactions with full CRUD, plus `pause`, `resume`, and `process-due` endpoints, all protected by authentication middleware.
+- `emailHelper.js` — nodemailer-based email utility with `sendBudgetAlertEmail`, `sendGoalMilestoneEmail`, `sendWelcomeEmail`, and `sendMonthlySummaryEmail` helpers.
+- `taxCalculator.js` — US tax estimation utilities including `estimateUSFederalIncomeTax`, `estimateUSCapitalGainsTax`, `calculateSelfEmploymentTax`, and `estimateQuarterlyTaxPayments` based on 2024 tax brackets.
+
 ## [2.1.0] - 2026-06-28
 
 ### Added
