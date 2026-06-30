@@ -7,9 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.3.0] - 2026-06-30
+
 ### Added
+- `analyticsRoutes.js` — protected REST routes for spending breakdown (`GET /api/analytics/spending`), income-vs-expense (`GET /api/analytics/income-vs-expense`), and net worth over time (`GET /api/analytics/net-worth`).
 - Dark mode preference persistence in user profile settings.
 - Transaction search and filter by date range, category, and amount.
+
+### Changed
+- `server.js` now mounts `analyticsRoutes` at `/api/analytics` alongside all other API routes.
+- `ROADMAP.md` updated: v2.0–v2.3 marked complete; v3.0 mobile app added as in-progress milestone.
 
 ## [2.2.0] - 2026-06-29
 
