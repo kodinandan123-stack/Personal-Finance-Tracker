@@ -11,6 +11,9 @@ import BudgetPage from './pages/BudgetPage';
 import ReportsPage from './pages/ReportsPage';
 import ProfilePage from './pages/ProfilePage';
 import RecurringPage from './pages/RecurringPage';
+import AnalyticsPage from './pages/AnalyticsPage';
+import InvestmentsPage from './pages/InvestmentsPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 function PrivateRoute({ children }) {
     const { user, loading } = useContext(AuthContext);
@@ -35,9 +38,12 @@ function App() {
                                                         <Route path="/reports" element={<PrivateRoute><ReportsPage /></PrivateRoute>PrivateRoute>} />
                                                                 <Route path="/profile" element={<PrivateRoute><ProfilePage /></PrivateRoute>PrivateRoute>} />
                                                                         <Route path="/recurring" element={<PrivateRoute><RecurringPage /></PrivateRoute>PrivateRoute>} />
-                                                                        </Route>Routes>
-                                                                </Route>Router>
-                                                          );
-                                                          }
-                                                        
-                                                        export default App;</div>
+                                                                                <Route path="/analytics" element={<PrivateRoute><AnalyticsPage /></PrivateRoute>PrivateRoute>} />
+                                                                                        <Route path="/investments" element={<PrivateRoute><InvestmentsPage /></PrivateRoute>PrivateRoute>} />
+                                                                                                <Route path="*" element={<NotFoundPage />} />
+                                                                                        </Route>Routes>
+                                                                                </Route>Router>
+                                                                          );
+                                                                          }
+                                                                        
+                                                                        export default App;</div>
