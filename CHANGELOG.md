@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.4.0] - 2026-07-02
+
+### Added
+- `InvestmentsPage.jsx` — full-featured frontend page for portfolio management with a summary stats bar (total cost, market value, gain/loss, return %), an add/edit form, and a sortable holdings table showing per-row gain/loss with colour coding.
+- - `/analytics` route wired into `App.jsx` with `PrivateRoute` protection, connecting the existing `AnalyticsPage` to the router.
+  - - `/investments` route wired into `App.jsx` with `PrivateRoute` protection, connecting `InvestmentsPage` to the router.
+    - - Catch-all `*` route in `App.jsx` pointing to `NotFoundPage` for unmatched URLs.
+     
+      - ### Changed
+      - - `App.jsx` now imports and renders `AnalyticsPage`, `InvestmentsPage`, and `NotFoundPage`; all three routes are protected where appropriate.
+       
+        - 
+
 ## [2.3.0] - 2026-06-30
 
 ### Added
