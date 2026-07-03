@@ -16,6 +16,7 @@ const recurringTransactionRoutes = require('./routes/recurringTransactionRoutes'
 const investmentRoutes = require('./routes/investmentRoutes');
 const healthRoutes = require('./routes/healthRoutes');
 const analyticsRoutes = require('./routes/analyticsRoutes');
+const currencyRoutes = require('./routes/currencyRoutes');
 const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 
 const app = express();
@@ -56,6 +57,7 @@ app.use('/api/recurring', recurringTransactionRoutes);
 app.use('/api/investments', investmentRoutes);
 app.use('/api/health', healthRoutes);
 app.use('/api/analytics', analyticsRoutes);
+app.use('/api/currency', currencyRoutes);
 
 // Root endpoint
 app.get('/', (req, res) => {
