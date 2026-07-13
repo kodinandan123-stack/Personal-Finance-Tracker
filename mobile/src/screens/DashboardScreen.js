@@ -3,10 +3,12 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity, ActivityIndicator
 import { getTransactions } from '../services/api'
 import { clearToken } from '../services/auth'
 import { useCurrency } from '../hooks/useCurrency'
+import NotificationBanner from '../components/NotificationBanner'
 
 export default function DashboardScreen({ onLogout }) {
   const [transactions, setTransactions] = useState([])
   const [loading, setLoading] = useState(true)
+  const [bannerVisible, setBannerVisible] = useState(false)
   const { format } = useCurrency()
 
 useEffect(() => {
@@ -26,6 +28,11 @@ useEffect(() => {
 
 const income = transactions.filter((t) => t.type === 'income').reduce((sum, t) => sum + t.amount, 0)
   const expenses = transactions.filter((t) => t.type === 'expense').reduce((sum, t) => sum + t.amount, 0)
+  const isOverBudget = !loading && income > 0 && expenses > income
+
+useEffect(() => {
+  setBannerVisible(isOverBudget)
+}, [isOverBudget])
 
 const handleLogout = async () => {
   await clearToken()
@@ -33,33 +40,40 @@ const handleLogout = async () => {
 }
 
 return (
-  <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+  <View style={styles.container}>
+<NotificationBanner
+  visible={bannerVisible}
+  message="Heads up: your expenses have exceeded your income recently."
+  variant="warning"
+  onDismiss={() => setBannerVisible(false)}
+  />
+    <ScrollView contentContainerStyle={styles.content}>
 <View style={styles.header}>
 <Text style={styles.title}>Dashboard</Text>
-<TouchableOpacity onPress={handleLogout}>
-  <Text style={styles.logout}>Log out</Text>
-  </TouchableOpacity>
-  </View>
+  <TouchableOpacity onPress={handleLogout}>
+    <Text style={styles.logout}>Log out</Text>
+    </TouchableOpacity>
+    </View>
 
 <View style={styles.summaryRow}>
 <View style={[styles.summaryCard, styles.incomeCard]}>
-  <Text style={styles.summaryLabel}>Income</Text>
-<Text style={styles.summaryValue}>{format(income)}</Text>
-  </View>
-<View style={[styles.summaryCard, styles.expenseCard]}>
-  <Text style={styles.summaryLabel}>Expenses</Text>
-<Text style={styles.summaryValue}>{format(expenses)}</Text>
-  </View>
-  </View>
+    <Text style={styles.summaryLabel}>Income</Text>
+  <Text style={styles.summaryValue}>{format(income)}</Text>
+    </View>
+  <View style={[styles.summaryCard, styles.expenseCard]}>
+    <Text style={styles.summaryLabel}>Expenses</Text>
+  <Text style={styles.summaryValue}>{format(expenses)}</Text>
+    </View>
+    </View>
 
 <Text style={styles.sectionTitle}>Recent Transactions</Text>
-{loading ? (
-  <ActivityIndicator style={{ marginTop: 16 }} />
-) : transactions.length === 0 ? (
-  <Text style={styles.empty}>No recent transactions yet.</Text>
-) : (
-  transactions.map((t) => (
-  <View key={t._id || t.id} style={styles.transactionRow}>
+  {loading ? (
+    <ActivityIndicator style={{ marginTop: 16 }} />
+  ) : transactions.length === 0 ? (
+    <Text style={styles.empty}>No recent transactions yet.</Text>
+  ) : (
+    transactions.map((t) => (
+    <View key={t._id || t.id} style={styles.transactionRow}>
 <Text style={styles.transactionCategory}>{t.category}</Text>
 <Text style={t.type === 'income' ? styles.incomeAmount : styles.expenseAmount}>
 {t.type === 'income' ? '+' : '-'}{format(Math.abs(t.amount))}
@@ -68,6 +82,7 @@ return (
 ))
 )}
   </ScrollView>
+  </View>
 )
 }
 
