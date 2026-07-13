@@ -15,7 +15,7 @@ Planned features and improvements for the Personal Finance Tracker.
 ## v2.0 — ✅ Complete
 - [x] Budget alerts and notifications
 - [x] Multi-currency support
-- [x] Mobile app scaffold and auth (foundation committed; screens in progress — see MOBILE.md)
+- [x] Mobile app (Expo/React Native client) — see MOBILE.md
 
 ## v2.1 — ✅ Complete
 - [x] Structured health check endpoint with DB status
@@ -32,17 +32,18 @@ Planned features and improvements for the Personal Finance Tracker.
 - [x] Dark mode preference persistence
 - [x] Transaction search and filter by date range, category, and amount
 
-## v3.0 — 🚧 In Progress (Mobile)
-- [ ] Navigation setup (React Navigation + tab navigator)
-- [ ] Login and Register screens
-- [ ] Dashboard screen with charts
-- [ ] Transactions screen
-- [ ] Budgets screen
-- [ ] Goals screen
-- [ ] Recurring transactions screen
-- [ ] Reports screen
-- [ ] Profile screen
-- [ ] Shared components (notification banner, currency helper, debounce)
+## v3.0 — ✅ Complete (Mobile)
+- [x] Navigation setup (React Navigation + tab navigator)
+- [x] Login and Register screens
+- [x] Dashboard screen with charts
+- [x] Transactions screen
+- [x] Budgets screen
+- [x] Goals screen
+- [x] Recurring transactions screen
+- [x] Reports screen
+- [x] Profile screen
+- [x] Shared components (notification banner, currency helper, debounce)
+- [x] App entry point (App.js) and Babel config wired up for Expo
 
 ## Future Ideas
 - [ ] Shared/household accounts
