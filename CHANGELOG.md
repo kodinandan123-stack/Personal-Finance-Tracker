@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Synced README.md and MOBILE.md with ROADMAP.md: mobile app (v3.0) status corrected from "not started" to "complete", matching the existing `mobile/` codebase.
+
 ## [2.4.0] - 2026-07-02
 
 ### Added
