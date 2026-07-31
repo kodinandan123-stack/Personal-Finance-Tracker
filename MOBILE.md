@@ -6,8 +6,7 @@ the client-side work required to reach a complete mobile build.
 
 ## Status
 
-Not started. There is currently no mobile codebase, branch, or in-progress
-pull request.
+Complete. The mobile codebase now lives in the `mobile/` directory (Expo/React Native client), covering all screens and shared components listed below.
 
 ## Proposed Stack
 
